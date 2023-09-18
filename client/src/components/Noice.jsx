@@ -2,7 +2,10 @@ function Noice({ notice }) {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-center">
-        <table className="table table-bordered" style={{ width: "50%" }}>
+        <table
+          className="table table-bordered table-responsive-md"
+          style={{ width: "100%" }}
+        >
           <thead>
             <tr>
               <th>Name</th>

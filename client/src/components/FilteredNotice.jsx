@@ -38,7 +38,7 @@ function FilteredNotice({ fetchNotice }) {
 
       // Call the fetchNotice function to update the list of notices
 
-      console.log("The notice are deleted");
+      console.log("The notices are deleted");
       fetchNotice();
     } catch (error) {
       console.log("Error clearing notices", error);
@@ -48,34 +48,41 @@ function FilteredNotice({ fetchNotice }) {
   return (
     <div className="container mt-5">
       <h1 className="mb-4 text-center">Notice Board</h1>
-      <div className="input-group mb-3">
-        <input
-          ref={textRef}
-          type="text"
-          className="form-control"
-          placeholder="Enter the notice name"
-        />
-        <input
-          ref={authorRef}
-          type="text"
-          className="form-control"
-          placeholder="Enter the notice author"
-        />
-        <div className="input-group-append">
-          <button
-            onClick={addNotice}
-            className="btn btn-outline-success"
-            type="button"
-          >
-            Add Notice
-          </button>
-          <button
-            onClick={clearNotice}
-            className="btn btn-outline-danger"
-            type="button"
-          >
-            Clear All Notices
-          </button>
+      <div className="row">
+        <div className="col-md-6 col-sm-12 mb-3">
+          <input
+            ref={textRef}
+            type="text"
+            className="form-control"
+            placeholder="Enter the notice name"
+          />
+        </div>
+        <div className="col-md-4 col-sm-12 mb-3">
+          <input
+            ref={authorRef}
+            type="text"
+            className="form-control"
+            placeholder="Enter the notice author"
+          />
+        </div>
+        <div className="col-md-2 col-sm-12 d-flex justify-content-center">
+          <div className="input-group">
+            <button
+              onClick={addNotice}
+              className="btn btn-outline-success"
+              type="button"
+            >
+              Add
+            </button>
+            <div className="ms-2"></div>
+            <button
+              onClick={clearNotice}
+              className="btn btn-outline-danger"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
         </div>
       </div>
     </div>
