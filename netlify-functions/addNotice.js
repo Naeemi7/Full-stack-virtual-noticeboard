@@ -7,7 +7,7 @@ export const handler = async (event, context) => {
     const requestBody = JSON.parse(event.body);
 
     // Replace the URL with the appropriate backend API endpoint
-    await axios.post("http://your-backend-api-url/notices/new", requestBody);
+    await axios.post("http://localhost:3000/notices/new", requestBody);
 
     return {
       statusCode: 201,

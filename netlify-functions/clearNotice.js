@@ -5,7 +5,7 @@ import axios from "axios";
 export const handler = async (event, context) => {
   try {
     // Replace the URL with the appropriate backend API endpoint
-    await axios.delete("http://your-backend-api-url/notices/clear");
+    await axios.delete("http://localhost:3000/notices/clear");
 
     return {
       statusCode: 200,

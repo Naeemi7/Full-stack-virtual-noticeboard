@@ -5,7 +5,7 @@ import axios from "axios";
 export const handler = async (event, context) => {
   try {
     // Replace the URL with the appropriate backend API endpoint
-    const response = await axios.get("http://your-backend-api-url/notices/all");
+    const response = await axios.get("http://localhost:3000/notices/all");
 
     return {
       statusCode: 200,
