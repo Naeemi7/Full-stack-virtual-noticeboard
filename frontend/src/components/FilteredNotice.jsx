@@ -18,7 +18,11 @@ function FilteredNotice({ fetchNotice }) {
       };
 
       // Send a POST request to your API to add the new notice
-      await axios.post("/.netlify/functions/addNotice", newNotice);
+      await axios.post("/.netlify/functions/addNotice", newNotice, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Call the fetchNotice function to update the list of notices
       fetchNotice();
@@ -34,7 +38,11 @@ function FilteredNotice({ fetchNotice }) {
   const clearNotice = async () => {
     try {
       // Send a DELETE request to your API to clear all notices
-      await axios.delete("/.netlify/functions/clearNotice");
+      await axios.delete("/.netlify/functions/clearNotice", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Call the fetchNotice function to update the list of notices
 
