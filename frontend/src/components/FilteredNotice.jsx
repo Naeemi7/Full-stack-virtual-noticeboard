@@ -18,7 +18,7 @@ function FilteredNotice({ fetchNotice }) {
       };
 
       // Send a POST request to your API to add the new notice
-      await axios.post("http://localhost:3001/notices/new", newNotice);
+      await axios.post("http://localhost:3000/notices/new", newNotice);
 
       // Call the fetchNotice function to update the list of notices
       fetchNotice();
@@ -34,7 +34,7 @@ function FilteredNotice({ fetchNotice }) {
   const clearNotice = async () => {
     try {
       // Send a DELETE request to your API to clear all notices
-      await axios.delete("http://localhost:3001/notices/clear");
+      await axios.delete("http://localhost:3000/notices/clear");
 
       // Call the fetchNotice function to update the list of notices
 
