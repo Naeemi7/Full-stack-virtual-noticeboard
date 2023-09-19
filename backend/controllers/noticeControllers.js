@@ -1,20 +1,14 @@
 import { StatusCodes } from "http-status-codes";
 import Notice from "../models/Notice.js";
 
-/**
- * Get All the Notices
- * @param {*} req
- * @param {*} res
- * @returns
- */
 export const getAllNotice = async (req, res) => {
   try {
     const allNotice = await Notice.find();
 
     if (!allNotice || allNotice.length === 0) {
-      return res.status(StatusCodes.NOT_FOUND).json({
-        message: "No Notices Found",
-      });
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "No Notices Found" });
     }
 
     return res.status(StatusCodes.OK).json(allNotice);
@@ -25,19 +19,10 @@ export const getAllNotice = async (req, res) => {
   }
 };
 
-/**
- * Create a notice
- * @param {*} req
- * @param {*} res
- * @returns
- */
 export const createNotice = async (req, res) => {
   const { text, author } = req.body;
   try {
-    const newNotice = await Notice.create({
-      text,
-      author,
-    });
+    const newNotice = await Notice.create({ text, author });
 
     return res
       .status(StatusCodes.CREATED)
@@ -49,17 +34,11 @@ export const createNotice = async (req, res) => {
   }
 };
 
-/**
-Clear All the Notices
- * @param {*} req
- * @param {*} res
- * @returns
- */
 export const clearNotice = async (req, res) => {
   try {
     const deletedNotice = await Notice.deleteMany();
 
-    if (!deletedNotice) {
+    if (!deletedNotice.deletedCount || deletedNotice.deletedCount === 0) {
       return res
         .status(StatusCodes.NOT_FOUND)
         .json({ message: "Notice not found" });

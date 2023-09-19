@@ -7,12 +7,12 @@ import noticeRoute from "./routes/noticeRoute.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000; // Use the PORT from .env or default to 3000
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
 const corsOption = {
-  origin: "*", // Allow all origins
+  origin: "*", // You might want to restrict this to specific origins in a production environment.
   methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
 };
 
