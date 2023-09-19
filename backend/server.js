@@ -2,12 +2,11 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import noticeRoute from "./routes/noticeRoute.js";
 
 /* import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path"; */
-
-import noticeRoute from "./routes/noticeRoute.js";
 
 /* const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename); */
@@ -18,13 +17,7 @@ const app = express();
 const port = process.env.PORT || 3000; // Use the PORT from .env or default to 3000
 
 app.use(express.json());
-
-const corsOption = {
-  origin: "*", // Allow all origins
-  methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-};
-
-app.use(cors(corsOption));
+app.use(cors({ origin: "*" }));
 
 mongoose
   .connect(
