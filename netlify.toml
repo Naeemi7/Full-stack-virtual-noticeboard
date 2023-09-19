@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"
+  functions = "backend"
+
+[build.environment]
+  REACT_APP_BACKEND_API_URL = "/.netlify/functions"
