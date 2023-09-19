@@ -22,7 +22,7 @@ export const handler = async (event, context) => {
 };
  */
 
-import Notice from "../backend/models/Notice.js"; // Adjust the path as needed
+import Notice from "../../backend/models/Notice.js"; // Adjust the path as needed
 
 export const handler = async (event, context) => {
   try {

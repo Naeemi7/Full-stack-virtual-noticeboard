@@ -24,7 +24,7 @@ export const handler = async (event, context) => {
 };
  */
 
-import Notice from "../backend/models/Notice.js";
+import Notice from "../../backend/models/Notice.js";
 
 export const handler = async (event, context) => {
   const { text, author } = JSON.parse(event.body);
