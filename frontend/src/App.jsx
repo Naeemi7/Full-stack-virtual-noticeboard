@@ -11,7 +11,7 @@ function App() {
   // Define the fetchNotice function here
   const fetchNotice = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/notices/all");
+      const res = await axios.get("/.netlify-functions/getNotice");
       console.log(res);
 
       setNotice(res.data);
