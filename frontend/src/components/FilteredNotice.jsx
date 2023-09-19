@@ -2,14 +2,20 @@ import { useRef } from "react";
 import axios from "axios";
 
 function FilteredNotice({ fetchNotice }) {
-  const textRef = useRef(null);
-  const authorRef = useRef(null);
+  const textRef = useRef(""); // Use an empty string as the initial value
+  const authorRef = useRef(""); // Use an empty string as the initial value
 
   const addNotice = async () => {
     try {
       // Get the values from the input fields
       const noticeName = textRef.current.value;
       const noticeAuthor = authorRef.current.value;
+
+      // Check if the values are empty
+      if (!noticeName || !noticeAuthor) {
+        console.error("Text and author fields must not be empty.");
+        return;
+      }
 
       // Create an object to represent the new notice
       const newNotice = {
