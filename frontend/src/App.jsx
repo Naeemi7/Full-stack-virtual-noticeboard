@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import axios from "axios";
+
 import Noice from "./components/Noice";
 import FilteredNotice from "./components/FilteredNotice";
 

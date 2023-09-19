@@ -59,7 +59,7 @@ export const clearNotice = async (req, res) => {
   try {
     const deletedNotice = await Notice.deleteMany();
 
-    if (!deletedNotice) {
+    if (!deletedNotice.deletedCount || deletedNotice.deletedCount === 0) {
       return res
         .status(StatusCodes.NOT_FOUND)
         .json({ message: "Notice not found" });
