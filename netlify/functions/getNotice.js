@@ -1,6 +1,6 @@
 // netlify-functions/getNotices.js
 
-import axios from "axios";
+/* import axios from "axios";
 
 export const handler = async (event, context) => {
   try {
@@ -17,6 +17,35 @@ export const handler = async (event, context) => {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Internal Server Error" }),
+    };
+  }
+};
+ */
+
+import Notice from "../backend/models/Notice.js";
+
+export const handler = async (event, context) => {
+  try {
+    const allNotice = await Notice.find();
+
+    if (!allNotice || allNotice.length === 0) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ message: "No Notices Found" }),
+      };
+    }
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(allNotice),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: "Error happened",
+        error: error.toString(),
+      }),
     };
   }
 };
