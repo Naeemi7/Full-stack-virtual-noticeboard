@@ -2,20 +2,14 @@ import { useRef } from "react";
 import axios from "axios";
 
 function FilteredNotice({ fetchNotice }) {
-  const textRef = useRef(""); // Use an empty string as the initial value
-  const authorRef = useRef(""); // Use an empty string as the initial value
+  const textRef = useRef(null);
+  const authorRef = useRef(null);
 
   const addNotice = async () => {
     try {
       // Get the values from the input fields
       const noticeName = textRef.current.value;
       const noticeAuthor = authorRef.current.value;
-
-      // Check if the values are empty
-      if (!noticeName || !noticeAuthor) {
-        console.error("Text and author fields must not be empty.");
-        return;
-      }
 
       // Create an object to represent the new notice
       const newNotice = {
@@ -24,7 +18,11 @@ function FilteredNotice({ fetchNotice }) {
       };
 
       // Send a POST request to your API to add the new notice
-      await axios.post("/.netlify/functions/addNotice", newNotice);
+      await axios.post("/.netlify/functions/addNotice", newNotice, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Call the fetchNotice function to update the list of notices
       fetchNotice();
@@ -33,21 +31,25 @@ function FilteredNotice({ fetchNotice }) {
       textRef.current.value = "";
       authorRef.current.value = "";
     } catch (error) {
-      console.error("Error adding notice", error);
+      console.log("Error adding notice", error);
     }
   };
 
   const clearNotice = async () => {
     try {
       // Send a DELETE request to your API to clear all notices
-      await axios.delete("/.netlify/functions/clearNotice");
+      await axios.delete("/.netlify/functions/clearNotice", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Call the fetchNotice function to update the list of notices
-      fetchNotice();
 
       console.log("The notices are deleted");
+      fetchNotice();
     } catch (error) {
-      console.error("Error clearing notices", error);
+      console.log("Error clearing notices", error);
     }
   };
 

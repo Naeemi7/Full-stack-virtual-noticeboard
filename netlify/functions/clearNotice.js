@@ -1,7 +1,13 @@
-import Notice from "../../backend/models/Notice.js"; // Adjust the path as needed
+const connectToDatabase = require("./dbConnection.js");
 
-export const handler = async (event, context) => {
+const Notice = require("./Notice.js");
+
+const dotenv = require("dotenv");
+
+dotenv.config();
+const handler = async (event, context) => {
   try {
+    await connectToDatabase();
     const deletedNotice = await Notice.deleteMany();
 
     if (!deletedNotice.deletedCount || deletedNotice.deletedCount === 0) {
@@ -25,3 +31,4 @@ export const handler = async (event, context) => {
     };
   }
 };
+module.exports = { handler };
