@@ -27,9 +27,16 @@ export const handler = async (event, context) => {
 import Notice from "../../backend/models/Notice.js";
 
 export const handler = async (event, context) => {
+  console.log("Received event body:", event.body);
   const { text, author } = JSON.parse(event.body);
 
   try {
+    if (!event.body) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: "Request body is empty" }),
+      };
+    }
     const newNotice = await Notice.create({
       text,
       author,
