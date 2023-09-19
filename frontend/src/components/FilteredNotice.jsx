@@ -27,7 +27,7 @@ function FilteredNotice({ fetchNotice }) {
       textRef.current.value = "";
       authorRef.current.value = "";
     } catch (error) {
-      console.log("Error adding notice", error);
+      console.error("Error adding notice", error);
     }
   };
 
@@ -37,11 +37,11 @@ function FilteredNotice({ fetchNotice }) {
       await axios.delete("/.netlify/functions/clearNotice");
 
       // Call the fetchNotice function to update the list of notices
+      fetchNotice();
 
       console.log("The notices are deleted");
-      fetchNotice();
     } catch (error) {
-      console.log("Error clearing notices", error);
+      console.error("Error clearing notices", error);
     }
   };
 

@@ -15,14 +15,13 @@ function App() {
       console.log(res);
 
       setNotice(res.data);
-      /*    console.log(res.data); */
 
       console.log("Fetch Notice");
     } catch (error) {
-      if (error.code === "ERR_BAD_REQUEST") {
+      if (error.response && error.response.status === 400) {
         setNotice([]);
       }
-      console.log("Error fetching Notice Data", error);
+      console.error("Error fetching Notice Data", error);
     }
   };
 
