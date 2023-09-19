@@ -15,7 +15,7 @@ const __dirname = dirname(__filename);
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001; // Use the PORT from .env or default to 3001
+const port = process.env.PORT || 3000; // Use the PORT from .env or default to 3001
 
 app.use(express.json());
 
