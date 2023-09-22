@@ -18,7 +18,7 @@ function Noice({ notice }) {
               <tr key={item._id}>
                 <td>{item.text}</td>
                 <td>{item.author}</td>
-                <td>{item.date}</td>
+                <td>{new Date(item.date).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>

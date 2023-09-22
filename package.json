@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dotenv": "^16.3.1",
-    "mongoose": "^7.5.2"
+    "mongoose": "^7.5.2",
+    "netlify-cli": "^16.4.1"
   }
 }
