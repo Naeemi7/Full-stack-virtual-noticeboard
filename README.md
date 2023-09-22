@@ -81,4 +81,3 @@ npm start
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can customize this `README.md` file with more details about your project and any additional instructions or information you want to include. Make sure to replace placeholders like `your-username` and provide accurate setup instructions based on your project's structure.
